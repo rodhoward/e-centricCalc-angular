@@ -1,0 +1,10 @@
+<form (ngSubmit)="onCalculateClicked()" #calcForm="ngForm">
+    <my-numeric-input [(ngModel)]="input1" name="input1"></my-numeric-input>
+    <select [(ngModel)]="selectedOperation" name="selectedOperation">
+            <option *ngFor="let o of operations" [ngValue]="o">{{o.name}}</option>
+        </select>
+    <my-numeric-input *ngIf="!selectedOperation.singleInput" [(ngModel)]="input2" name="input2">
+    </my-numeric-input>
+    <button type="submit" [disabled]="!calcForm.form.valid">Calculate</button>
+</form>
+<div *ngIf="result !== undefined">= {{result}}</div>
